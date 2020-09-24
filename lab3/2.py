@@ -11,17 +11,19 @@ GREEN = (0, 200, 64)
 YELLOW = (225, 225, 0)
 PINK = (230, 50, 230)
 RED = (255, 0, 0)
+SKY = (170, 238, 255)
+SKIN = (244, 227, 215)
 
 FPS = 30
 screen = pygame.display.set_mode((800, 600))
 
 # outside
-pygame.draw.rect(screen, (170, 238, 255), (0, 0, 800, 300))
+pygame.draw.rect(screen, SKY, (0, 0, 800, 300))
 pygame.draw.rect(screen, GREEN, (0, 300, 800, 800))
 
 # man
 pygame.draw.ellipse(screen, BLUE, (130, 180, 160, 280))
-pygame.draw.circle(screen, WHITE, (210, 150), 50)
+pygame.draw.circle(screen, SKIN, (210, 150), 50)
 # hands
 pygame.draw.line(screen, BLACK, [160, 210], [70, 330])
 pygame.draw.line(screen, BLACK, [260, 210], [350, 330])
@@ -38,7 +40,7 @@ pygame.draw.circle(screen, BLACK, (40, 300), 15)
 
 # woman
 pygame.draw.polygon(screen, PINK, [[550, 180], [450, 450], [650, 450]])
-pygame.draw.circle(screen, WHITE, (550, 150), 50)
+pygame.draw.circle(screen, SKIN, (550, 150), 50)
 # hands
 pygame.draw.line(screen, BLACK, [540, 210], [350, 330])
 pygame.draw.line(screen, BLACK, [560, 210], [620, 260])
