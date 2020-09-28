@@ -1,4 +1,5 @@
 import pygame
+import numpy as np
 
 pygame.init()
 
@@ -92,6 +93,47 @@ pygame.draw.line(screen, BLACK, (105, 465), (66, 330))
 pygame.draw.polygon(screen, RED, [[66, 330], [23, 250], [100, 240]])
 pygame.draw.circle(screen, RED, (80, 230), 25)
 pygame.draw.circle(screen, RED, (40, 234), 25)
+
+
+def sun(x_cord, y_cord, radius, resolution, len_shines):
+    pygame.draw.circle(screen, YELLOW, (x_cord, y_cord), radius)
+    t: int = 0
+    for i in range(resolution):
+        t += 2 * np.pi / resolution
+        pygame.draw.line(screen, YELLOW, (x_cord, y_cord), (x_cord + np.cos(t) * radius * len_shines, y_cord + np.sin(t)
+                                                            * radius * len_shines))
+
+
+sun(100, 100, 60, 40, 1.2)
+
+
+def cloud(x_cord, y_cord, size, reverse):
+    if reverse == 'normal':
+        i_reverse = 1
+    elif reverse == 'reverse':
+        i_reverse = -1
+
+    pygame.draw.circle(screen, WHITE, (int(x_cord + i_reverse * 30 * size), int(y_cord + 15 * size)), int(30 * size))
+    pygame.draw.circle(screen, BLACK, (int(x_cord + i_reverse * 30 * size), int(y_cord + 15 * size)), int(30 * size), 1)
+    pygame.draw.circle(screen, WHITE, (int(x_cord + i_reverse * 0 * size), int(y_cord + 15 * size)), int(30 * size))
+    pygame.draw.circle(screen, BLACK, (int(x_cord + i_reverse * 0 * size), int(y_cord + 15 * size)), int(30 * size), 1)
+    pygame.draw.circle(screen, WHITE, (int(x_cord + i_reverse * -30 * size), int(y_cord + 15 * size)), int(30 * size))
+    pygame.draw.circle(screen, BLACK, (int(x_cord + i_reverse * -30 * size),
+                                       int(y_cord + 15 * size)), int(30 * size), 1)
+    pygame.draw.circle(screen, WHITE, (int(x_cord + i_reverse * 50 * size), int(y_cord + 45 * size)), int(30 * size))
+    pygame.draw.circle(screen, BLACK, (int(x_cord + i_reverse * 50 * size), int(y_cord + 45 * size)), int(30 * size), 1)
+    pygame.draw.circle(screen, WHITE, (int(x_cord + i_reverse * 20 * size), int(y_cord + 45 * size)), int(30 * size))
+    pygame.draw.circle(screen, BLACK, (int(x_cord + i_reverse * 20 * size), int(y_cord + 45 * size)), int(30 * size), 1)
+    pygame.draw.circle(screen, WHITE, (int(x_cord + i_reverse * -10 * size), int(y_cord + 45 * size)), int(30 * size))
+    pygame.draw.circle(screen, BLACK, (int(x_cord + i_reverse * -10 * size),
+                                       int(y_cord + 45 * size)), int(30 * size), 1)
+    pygame.draw.circle(screen, WHITE, (int(x_cord + i_reverse * -40 * size), int(y_cord + 45 * size)), int(30 * size))
+    pygame.draw.circle(screen, BLACK, (int(x_cord + i_reverse * -40 * size),
+                                       int(y_cord + 45 * size)), int(30 * size), 1)
+
+
+cloud(800, 60, 1, 'normal')
+cloud(300, 70, 1.3, 'reverse')
 
 pygame.display.update()
 clock = pygame.time.Clock()
